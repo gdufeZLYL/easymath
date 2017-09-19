@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-09-18 23:09:51
+Date: 2017-09-19 14:30:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `class_info` (
 -- ----------------------------
 -- Records of class_info
 -- ----------------------------
-INSERT INTO `class_info` VALUES ('1', '1', '', '广东财经大学测试1班', '2017-09-18 17:01:12');
+INSERT INTO `class_info` VALUES ('1', '1', '2,1,柯小南;3,2,柯大楠', '广东财经大学测试1班', '2017-09-18 17:01:12');
 INSERT INTO `class_info` VALUES ('2', '1', '', '广东财经大学测试2班', '2017-09-18 17:01:27');
 
 -- ----------------------------
@@ -52,11 +52,13 @@ CREATE TABLE `score_info` (
   PRIMARY KEY (`testid`),
   KEY `user_test_fk` (`uid`),
   CONSTRAINT `user_test_fk` FOREIGN KEY (`uid`) REFERENCES `user_info` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='成绩数据表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='成绩数据表';
 
 -- ----------------------------
 -- Records of score_info
 -- ----------------------------
+INSERT INTO `score_info` VALUES ('1', '1', '101', '1', '0', '0', '0', '2017-09-19 11:08:57');
+INSERT INTO `score_info` VALUES ('2', '1', '202', '0', '1', '6', '0', '2017-09-19 11:22:19');
 
 -- ----------------------------
 -- Table structure for user_info

@@ -24,7 +24,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(rollbackOn = Exception.class)
     public ResponseResult<UserInfo> registerUserInfo(
             UserInfo userRegisterInfo) throws Exception {
-        ResponseResult<UserInfo> resultMsg = new ResponseResult();
+        ResponseResult<UserInfo> resultMsg = new ResponseResult<UserInfo>();
         UserInfo userInfo = userInfoDao.findByAccount(
                 userRegisterInfo.getAccount()
         );
@@ -45,7 +45,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     @Transactional(rollbackOn = Exception.class)
     public ResponseResult<UserInfo> loginUserInfo(UserInfo userLoginInfo) throws Exception {
-        ResponseResult<UserInfo> resultMsg = new ResponseResult();
+        ResponseResult<UserInfo> resultMsg = new ResponseResult<UserInfo>();
         UserInfo userInfo = userInfoDao.findByActAndPwd(
                 userLoginInfo.getAccount(),
                 userLoginInfo.getPassword()

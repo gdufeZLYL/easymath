@@ -1,9 +1,12 @@
 package com.gdufe.easymath.controller;
 
 import com.gdufe.easymath.bean.ResponseResult;
+import com.gdufe.easymath.bean.UserJoinInfo;
 import com.gdufe.easymath.entity.ClassInfo;
+import com.gdufe.easymath.entity.ScoreInfo;
 import com.gdufe.easymath.entity.UserInfo;
 import com.gdufe.easymath.service.ClassInfoService;
+import com.gdufe.easymath.service.ScoreInfoService;
 import com.gdufe.easymath.service.UserInfoService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ public class EasyMathController {
     private UserInfoService userInfoService;
     @Autowired
     private ClassInfoService classInfoService;
+    @Autowired
+    private ScoreInfoService scoreInfoService;
 
     @RequestMapping("/register")
     @ResponseBody
@@ -91,6 +96,36 @@ public class EasyMathController {
             resultMsg = classInfoService.selectClassInfo(classSelectInfo.getUid());
         } catch (Exception e) {
             resultMsg = new ResponseResult<List<ClassInfo>>();
+            resultMsg.setCode(1);
+            resultMsg.setMsg(e.getMessage());
+            resultMsg.setData(null);
+        }
+        return resultMsg;
+    }
+
+    @RequestMapping("/joinClass")
+    @ResponseBody
+    public ResponseResult<ClassInfo> joinClass(@RequestBody UserJoinInfo userJoinInfo) {
+        ResponseResult<ClassInfo> resultMsg = null;
+        try {
+            resultMsg = classInfoService.joinClassInfo(userJoinInfo);
+        } catch (Exception e) {
+            resultMsg = new ResponseResult<ClassInfo>();
+            resultMsg.setCode(1);
+            resultMsg.setMsg(e.getMessage());
+            resultMsg.setData(null);
+        }
+        return resultMsg;
+    }
+
+    @RequestMapping("/saveScore")
+    @ResponseBody
+    public ResponseResult<ScoreInfo> saveScore(@RequestBody ScoreInfo targetScoreInfo) {
+        ResponseResult<ScoreInfo> resultMsg = null;
+        try {
+            resultMsg = scoreInfoService.saveScoreInfo(targetScoreInfo);
+        } catch (Exception e) {
+            resultMsg = new ResponseResult<ScoreInfo>();
             resultMsg.setCode(1);
             resultMsg.setMsg(e.getMessage());
             resultMsg.setData(null);

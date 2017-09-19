@@ -10,5 +10,5 @@ public interface ScoreInfoService {
      * @param tScoreInfo
      * @return
      */
-    ResponseResult<ScoreInfo> saveScoreInfo(ScoreInfo tScoreInfo);
+    ResponseResult<ScoreInfo> saveScoreInfo(ScoreInfo tScoreInfo) throws Exception;
 }
